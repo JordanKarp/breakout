@@ -14,6 +14,7 @@ body {
 }
 
 #game {
+    cursor: none;
     background-color: white;
     margin-top: 5rem;
     border: 2px solid slategray;
