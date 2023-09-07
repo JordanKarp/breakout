@@ -19,7 +19,8 @@ let rowCount = 5,
     brickHeight = 18, 
     brickPadding = 12,
     topOffset = 40,
-    leftOffset = 33, 
+    leftOffset = 33,
+    bottomOffset = 10, 
     score = 0
 
 let bricks = []
@@ -41,7 +42,7 @@ function mouseMoveHandler(e) {
 
 function drawPaddle(){
     ctx.beginPath()
-    ctx.roundRect(paddleX, canvas.height- paddleHeight, paddleWidth, paddleHeight, 30)
+    ctx.roundRect(paddleX, canvas.height- paddleHeight - bottomOffset, paddleWidth, paddleHeight, 30)
     ctx.fillStyle = '#333'
     ctx.fill()
     ctx.closePath()
@@ -114,7 +115,7 @@ function init() {
 
     if (y + dy < ballRadius) {
         dy = -dy;
-    } else if (y + dy > canvas.height - ballRadius){
+    } else if (y + dy > canvas.height - ballRadius - bottomOffset){
         if (x > paddleX && x < paddleX + paddleWidth) {
             dy = -dy;
         } else {
