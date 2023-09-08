@@ -4,23 +4,24 @@ let canvas = document.getElementById('game'),
     ctx = canvas.getContext('2d'),
     ballRadius = 9.,
     x = Math.floor(Math.random() * canvas.width),
-    y = canvas.height - 40, 
+    y = canvas.height - 40,
     dx = 2,
-    dy = -2
+    dy = -2,
+    playing = true;
 
-let paddleHeight = 12, 
-    paddleWidth = 72
+let paddleHeight = 12,
+    paddleWidth = 72;
 
 let paddleX = (canvas.width - paddleWidth) / 2;
 
 let rowCount = 5,
-    colCount = 9, 
+    colCount = 9,
     brickWidth = 54,
-    brickHeight = 18, 
+    brickHeight = 18,
     brickPadding = 12,
     topOffset = 40,
     leftOffset = 33,
-    bottomOffset = 10, 
+    bottomOffset = 10,
     score = 0
 
 let bricks = []
@@ -118,7 +119,8 @@ function init() {
     } else if (y + dy > canvas.height - ballRadius - bottomOffset){
         if (x > paddleX && x < paddleX + paddleWidth) {
             dy = -dy;
-        } else {
+        } else if (playing) {
+            playing = false;
             alert("Game Over");
             document.location.reload();
         }
